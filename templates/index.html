@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Shortcuts</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        .box { border: 1px solid #ddd; padding: 1rem; border-radius: 8px; background: #f9f9f9; }
+        .btn { display: inline-block; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; margin-right: 10px; }
+        .btn:hover { background: #0056b3; }
+        ul { list-style: none; padding: 0; }
+        li { margin: 5px 0; }
+        code { background: #eee; padding: 2px 4px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>Emoji Shortcut Importer</h1>
+    <p>Generate a shortcut file to import into your phone's keyboard settings.</p>
+
+    <div class="box">
+        <h3>Preview (First 10)</h3>
+        <ul>
+            {% for item in examples %}
+                <li>Type <code>{{ item.shortcut }}</code> &rarr; {{ item.phrase }}</li>
+            {% else %}
+                <li>No emojis found. Check your python console for errors.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div style="margin-top: 2rem;">
+        <h3>Download Files</h3>
+        <a href="/download/ios" class="btn">Download for iOS (.plist)</a>
+        <a href="/download/android" class="btn">Download for Android (.csv)</a>
+    </div>
+
+    <div class="box" style="margin-top: 2rem;">
+        <h3>How to Import</h3>
+        
+        <h4>🍎 iOS (Requires Mac)</h4>
+        <ol>
+            <li>Download the <strong>.plist</strong> file to your Mac.</li>
+            <li>Open <strong>System Settings</strong> &rarr; <strong>Keyboard</strong> &rarr; <strong>Text Replacements</strong>.</li>
+            <li>Drag and drop the downloaded file into the list.</li>
+            <li>The shortcuts will sync to your iPhone via iCloud.</li>
+        </ol>
+
+        <h4>🤖 Android</h4>
+        <ol>
+            <li>Download the <strong>.csv</strong> file to your phone.</li>
+            <li>Go to your Keyboard Settings (e.g., Gboard or Samsung Keyboard).</li>
+            <li>Look for <strong>Dictionary</strong> or <strong>Text Shortcuts</strong>.</li>
+            <li>Select <strong>Import</strong> and choose the CSV file.</li>
+            <li><em>Note: Some keyboards may require a third-party "Personal Dictionary" app to import CSVs.</em></li>
+        </ol>
+    </div>
+</body>
+</html>
